@@ -1,0 +1,7 @@
+[
+{
+  "directory": "/home/sbuda0611/myProjects/Infinitium/app/.cxx/RelWithDebInfo/6t1q6d6t/x86_64",
+  "command": "/home/sbuda0611/Android/Sdk/ndk/28.2.13676358/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=x86_64-none-linux-android26 --sysroot=/home/sbuda0611/Android/Sdk/ndk/28.2.13676358/toolchains/llvm/prebuilt/linux-x86_64/sysroot -Dmyapp_EXPORTS -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security   -O2 -g -DNDEBUG -fPIC -o CMakeFiles/myapp.dir/myapp.cpp.o -c /home/sbuda0611/myProjects/Infinitium/app/src/main/cpp/myapp.cpp",
+  "file": "/home/sbuda0611/myProjects/Infinitium/app/src/main/cpp/myapp.cpp"
+}
+]

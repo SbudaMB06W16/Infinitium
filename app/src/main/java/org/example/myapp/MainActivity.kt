@@ -1,4 +1,3 @@
-
 package org.example.myapp
 
 import android.os.Bundle
@@ -20,7 +19,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    CoinFlipScreen()
+                    MainScreen()
                 }
             }
         }
