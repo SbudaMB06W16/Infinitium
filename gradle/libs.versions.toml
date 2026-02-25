@@ -2,7 +2,7 @@
 # https://docs.gradle.org/current/userguide/version_catalogs.html#sec::toml-dependencies-format
 
 [versions]
-androidGradlePlugin = "8.13.2"
+androidGradlePlugin = "9.0.1"
 guava = "33.4.6-jre"
 kotlin = "2.2.21"
 

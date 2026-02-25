@@ -1,0 +1,7 @@
+[
+{
+  "directory": "/home/sbuda0611/myProjects/Infinitium/app/.cxx/Debug/4v3f5h6n/x86",
+  "command": "/home/sbuda0611/Android/Sdk/ndk/27.0.12077973/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=i686-none-linux-android26 --sysroot=/home/sbuda0611/Android/Sdk/ndk/27.0.12077973/toolchains/llvm/prebuilt/linux-x86_64/sysroot -Dmyapp_EXPORTS -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security   -fno-limit-debug-info  -fPIC -o CMakeFiles/myapp.dir/myapp.cpp.o -c /home/sbuda0611/myProjects/Infinitium/app/src/main/cpp/myapp.cpp",
+  "file": "/home/sbuda0611/myProjects/Infinitium/app/src/main/cpp/myapp.cpp"
+}
+]
