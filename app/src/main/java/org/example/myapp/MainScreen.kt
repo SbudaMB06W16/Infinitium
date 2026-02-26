@@ -111,8 +111,26 @@ fun TopicsGroup(items: List<TopicItem>, onTopicClick: (String) -> Unit) {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MainScreen(onTopicClick: (String) -> Unit) {
-    Scaffold {
+fun MainScreen(
+    onTopicClick: (String) -> Unit,
+    onNavigateToMain: () -> Unit,
+    onNavigateToProfile: () -> Unit,
+    onNavigateToAbout: () -> Unit,
+    onNavigateToLeaderboard: () -> Unit,
+    onNavigateToChallenge: () -> Unit
+) {
+    Scaffold(
+        floatingActionButton = {
+            FloatingMenu(
+                currentScreen = "main",
+                onNavigateToMain = onNavigateToMain,
+                onNavigateToProfile = onNavigateToProfile,
+                onNavigateToAbout = onNavigateToAbout,
+                onNavigateToLeaderboard = onNavigateToLeaderboard,
+                onNavigateToChallenge = onNavigateToChallenge
+            )
+        }
+    ) {
         innerPadding ->
         Column(modifier = Modifier.padding(innerPadding)) {
             // Screen Title
@@ -143,6 +161,6 @@ fun MainScreen(onTopicClick: (String) -> Unit) {
 @Composable
 fun MainScreenPreview() {
     InfinitiumTheme(darkTheme = true) {
-        MainScreen(onTopicClick = {})
+        MainScreen(onTopicClick = {}, onNavigateToMain = {}, onNavigateToProfile = {}, onNavigateToAbout = {}, onNavigateToLeaderboard = {}, onNavigateToChallenge = {})
     }
 }

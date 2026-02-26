@@ -1,5 +1,6 @@
 package org.example.myapp
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
@@ -23,6 +24,7 @@ import androidx.compose.ui.unit.dp
 fun TopicDetailScreen(topicTitle: String, onNavigateUp: () -> Unit) {
     val detail = topicDetails.find { it.title == topicTitle } ?: topicDetails.first()
 
+    BackHandler { onNavigateUp() }
     Scaffold(
         topBar = {
             TopAppBar(
