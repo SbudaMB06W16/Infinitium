@@ -8,6 +8,9 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import org.example.myapp.ui.theme.InfinitiumTheme
 
 class MainActivity : ComponentActivity() {
@@ -21,7 +24,27 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    MainScreen()
+                    val navController = rememberNavController()
+                    NavHost(navController = navController, startDestination = "welcome") {
+                        composable("welcome") {
+                            WelcomeScreen(onNavigateToMain = { 
+                                navController.navigate("main") {
+                                    popUpTo("welcome") { inclusive = true }
+                                }
+                            })
+                        }
+                        composable("main") {
+                            MainScreen(onTopicClick = { topicTitle ->
+                                navController.navigate("topicDetail/$topicTitle")
+                            })
+                        }
+                        composable("topicDetail/{topicTitle}") { backStackEntry ->
+                            TopicDetailScreen(
+                                topicTitle = backStackEntry.arguments?.getString("topicTitle") ?: "",
+                                onNavigateUp = { navController.navigateUp() }
+                            )
+                        }
+                    }
                 }
             }
         }

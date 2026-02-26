@@ -1,5 +1,6 @@
 package org.example.myapp
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -67,10 +68,11 @@ private val topicsData = listOf(
 )
 
 @Composable
-fun TopicItemRow(item: TopicItem) {
+fun TopicItemRow(item: TopicItem, onTopicClick: (String) -> Unit) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
+            .clickable { onTopicClick(item.title) }
             .padding(horizontal = 16.dp, vertical = 20.dp), // Increased vertical padding
         verticalAlignment = Alignment.CenterVertically
     ) {
@@ -90,7 +92,7 @@ fun TopicItemRow(item: TopicItem) {
 }
 
 @Composable
-fun TopicsGroup(items: List<TopicItem>) {
+fun TopicsGroup(items: List<TopicItem>, onTopicClick: (String) -> Unit) {
     Card(
         shape = RoundedCornerShape(20.dp),
         modifier = Modifier.fillMaxWidth(),
@@ -98,7 +100,7 @@ fun TopicsGroup(items: List<TopicItem>) {
     ) {
         Column {
             items.forEachIndexed { index, item ->
-                TopicItemRow(item = item)
+                TopicItemRow(item = item, onTopicClick = onTopicClick)
                 if (index < items.size - 1) {
                     Divider(modifier = Modifier.padding(start = 56.dp, end = 16.dp))
                 }
@@ -109,7 +111,7 @@ fun TopicsGroup(items: List<TopicItem>) {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MainScreen() {
+fun MainScreen(onTopicClick: (String) -> Unit) {
     Scaffold {
         innerPadding ->
         Column(modifier = Modifier.padding(innerPadding)) {
@@ -130,7 +132,7 @@ fun MainScreen() {
                 verticalArrangement = Arrangement.spacedBy(20.dp) // Space between groups
             ) {
                 items(topicsData) { group ->
-                    TopicsGroup(items = group)
+                    TopicsGroup(items = group, onTopicClick = onTopicClick)
                 }
             }
         }
@@ -141,6 +143,6 @@ fun MainScreen() {
 @Composable
 fun MainScreenPreview() {
     InfinitiumTheme(darkTheme = true) {
-        MainScreen()
+        MainScreen(onTopicClick = {})
     }
 }
