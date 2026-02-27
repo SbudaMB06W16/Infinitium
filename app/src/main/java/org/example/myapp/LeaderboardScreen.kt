@@ -185,7 +185,7 @@ private fun DefaultProfileImage(size: Dp, modifier: Modifier = Modifier) {
 private fun rememberLeaderboardUsers(): List<User> {
     return remember {
         val names = listOf(
-            "Rihanna", "Sanjib", "Pankaj", "Nur", "Manas", "Liam", "Olivia", "Noah", "Emma", "Oliver",
+            "Sbuda0611", "Sanjib", "Pankaj", "Nur", "Manas", "Liam", "Olivia", "Noah", "Emma", "Oliver",
             "Ava", "Elijah", "Charlotte", "William", "Sophia", "James", "Amelia", "Benjamin", "Isabella", "Lucas"
         )
         names.mapIndexed { index, name ->

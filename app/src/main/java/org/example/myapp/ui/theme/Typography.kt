@@ -1,4 +1,3 @@
-
 package org.example.myapp.ui.theme
 
 import androidx.compose.material3.Typography
@@ -15,5 +14,11 @@ val Typography = Typography(
         fontSize = 16.sp,
         lineHeight = 24.sp,
         letterSpacing = 0.5.sp
+    ),
+    headlineMedium = TextStyle(
+        fontFamily = GreatVibes, // Use the new Great Vibes font
+        fontWeight = FontWeight.Normal,
+        fontSize = 48.sp, // Increased font size for the new font
+        color = VibrantBlue
     )
 )

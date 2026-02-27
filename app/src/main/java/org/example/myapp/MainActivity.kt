@@ -53,7 +53,11 @@ fun AppNavHost(navController: NavHostController) {
         composable(mainScreenRoute) {
             MainScreen(
                 onTopicClick = { topicTitle ->
-                    navController.navigate("topicDetail/$topicTitle")
+                    if (topicTitle == "Algebraic Expressions") {
+                        navController.navigate("algebraicExpressions")
+                    } else {
+                        navController.navigate("topicDetail/$topicTitle")
+                    }
                 },
                 onNavigateToMain = navigateToMain,
                 onNavigateToProfile = { navController.navigate("profile") },
@@ -65,7 +69,12 @@ fun AppNavHost(navController: NavHostController) {
         composable("topicDetail/{topicTitle}") { backStackEntry ->
             TopicDetailScreen(
                 topicTitle = backStackEntry.arguments?.getString("topicTitle") ?: "",
-                onNavigateUp = navigateToMain
+                onNavigateUp = { navController.navigateUp() },
+                onNavigateToMain = navigateToMain,
+                onNavigateToProfile = { navController.navigate("profile") },
+                onNavigateToAbout = { navController.navigate("about") },
+                onNavigateToLeaderboard = { navController.navigate("leaderboard") },
+                onNavigateToChallenge = { navController.navigate("challenge") }
             )
         }
         composable("profile") { 
@@ -103,6 +112,17 @@ fun AppNavHost(navController: NavHostController) {
         }
         composable("settings") {
             SettingsScreen(
+                onNavigateToMain = navigateToMain,
+                onNavigateToProfile = { navController.navigate("profile") },
+                onNavigateToAbout = { navController.navigate("about") },
+                onNavigateToLeaderboard = { navController.navigate("leaderboard") },
+                onNavigateToChallenge = { navController.navigate("challenge") }
+            )
+        }
+        composable("algebraicExpressions") {
+            TopicDetailScreen(
+                topicTitle = "Algebraic Expressions",
+                onNavigateUp = { navController.navigateUp() },
                 onNavigateToMain = navigateToMain,
                 onNavigateToProfile = { navController.navigate("profile") },
                 onNavigateToAbout = { navController.navigate("about") },
