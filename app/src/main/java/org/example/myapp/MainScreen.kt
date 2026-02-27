@@ -91,24 +91,6 @@ fun TopicItemRow(item: TopicItem, onTopicClick: (String) -> Unit) {
     }
 }
 
-@Composable
-fun TopicsGroup(items: List<TopicItem>, onTopicClick: (String) -> Unit) {
-    Card(
-        shape = RoundedCornerShape(20.dp),
-        modifier = Modifier.fillMaxWidth(),
-        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant)
-    ) {
-        Column {
-            items.forEachIndexed { index, item ->
-                TopicItemRow(item = item, onTopicClick = onTopicClick)
-                if (index < items.size - 1) {
-                    Divider(modifier = Modifier.padding(start = 56.dp, end = 16.dp))
-                }
-            }
-        }
-    }
-}
-
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MainScreen(
@@ -130,27 +112,37 @@ fun MainScreen(
                 onNavigateToChallenge = onNavigateToChallenge
             )
         }
-    ) {
-        innerPadding ->
-        Column(modifier = Modifier.padding(innerPadding)) {
+    ) { innerPadding ->
+        Column(
+            modifier = Modifier
+                .padding(innerPadding)
+                .padding(horizontal = 16.dp, vertical = 24.dp)
+        ) {
             // Screen Title
             Text(
                 text = "Infinitium",
                 style = MaterialTheme.typography.headlineLarge,
-                modifier = Modifier.padding(start = 20.dp, top = 24.dp)
+                modifier = Modifier.padding(start = 4.dp, bottom = 4.dp)
             )
             Text(
                 text = "Mathematics",
                 style = MaterialTheme.typography.headlineSmall,
-                modifier = Modifier.padding(start = 20.dp, bottom = 16.dp)
+                modifier = Modifier.padding(start = 4.dp, bottom = 24.dp)
             )
-            // The list of topic groups
-            LazyColumn(
-                contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp),
-                verticalArrangement = Arrangement.spacedBy(20.dp) // Space between groups
+
+            // The list of topic groups, now inside a card
+            Card(
+                modifier = Modifier.fillMaxWidth(),
+                shape = RoundedCornerShape(20.dp),
+                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant)
             ) {
-                items(topicsData) { group ->
-                    TopicsGroup(items = group, onTopicClick = onTopicClick)
+                LazyColumn(contentPadding = PaddingValues(vertical = 8.dp)) {
+                    items(topicsData.first()) { item ->
+                        TopicItemRow(item = item, onTopicClick = onTopicClick)
+                        if (topicsData.first().last() != item) {
+                            Divider(modifier = Modifier.padding(start = 56.dp, end = 16.dp))
+                        }
+                    }
                 }
             }
         }

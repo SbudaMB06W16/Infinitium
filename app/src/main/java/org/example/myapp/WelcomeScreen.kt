@@ -74,14 +74,11 @@ fun WelcomeScreen(onNavigateToMain: () -> Unit) {
             )
             Spacer(modifier = Modifier.height(64.dp))
             Button(onClick = onNavigateToMain) {
-                Text("Sign In")
-            }
-            Button(onClick = onNavigateToMain) {
-                Text("Sign Up")
+                Text("Sign up with Google")
             }
             Spacer(modifier = Modifier.height(16.dp))
             TextButton(onClick = onNavigateToMain) {
-                Text("Skip")
+                Text("Guest Mode")
             }
         }
     }

@@ -38,7 +38,10 @@ fun FloatingMenu(
     val rotationAngle by animateFloatAsState(if (isMenuOpen) 45f else 0f)
     val vibrantBlue = Color(0xFF0088FF)
 
-    Column(horizontalAlignment = Alignment.End) {
+    Column(
+        horizontalAlignment = Alignment.End,
+        modifier = Modifier.padding(bottom = 14.dp, end = 5.dp) // Adjusted padding
+    ) {
         if (isMenuOpen) {
             if (currentScreen != "main") {
                 FloatingActionButton(

@@ -73,7 +73,8 @@ fun AppNavHost(navController: NavHostController) {
                 onNavigateToMain = navigateToMain,
                 onNavigateToAbout = { navController.navigate("about") },
                 onNavigateToLeaderboard = { navController.navigate("leaderboard") },
-                onNavigateToChallenge = { navController.navigate("challenge") }
+                onNavigateToChallenge = { navController.navigate("challenge") },
+                onSettingsClicked = { navController.navigate("settings") }
             )
         }
         composable("about") { 
@@ -98,6 +99,15 @@ fun AppNavHost(navController: NavHostController) {
                 onNavigateToProfile = { navController.navigate("profile") },
                 onNavigateToAbout = { navController.navigate("about") },
                 onNavigateToLeaderboard = { navController.navigate("leaderboard") }
+            )
+        }
+        composable("settings") {
+            SettingsScreen(
+                onNavigateToMain = navigateToMain,
+                onNavigateToProfile = { navController.navigate("profile") },
+                onNavigateToAbout = { navController.navigate("about") },
+                onNavigateToLeaderboard = { navController.navigate("leaderboard") },
+                onNavigateToChallenge = { navController.navigate("challenge") }
             )
         }
     }
