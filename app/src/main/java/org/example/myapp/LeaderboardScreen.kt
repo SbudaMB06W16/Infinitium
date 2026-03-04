@@ -120,8 +120,8 @@ private fun TopPlayerBanner(user: User) {
         Column(horizontalAlignment = Alignment.End) {
             Text(
                 text = user.name,
-                style = MaterialTheme.typography.headlineMedium,
-                fontWeight = FontWeight.Bold
+                style = MaterialTheme.typography.bodySmall,
+                color = vibrantBlue
             )
             Spacer(modifier = Modifier.height(4.dp))
             Text(

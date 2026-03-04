@@ -8,17 +8,16 @@ import androidx.compose.ui.unit.sp
 
 // Set of Material typography styles to start with
 val Typography = Typography(
-    bodyLarge = TextStyle(
-        fontFamily = FontFamily.Default,
-        fontWeight = FontWeight.Normal,
-        fontSize = 16.sp,
-        lineHeight = 24.sp,
-        letterSpacing = 0.5.sp
-    ),
-    headlineMedium = TextStyle(
-        fontFamily = GreatVibes, // Use the new Great Vibes font
-        fontWeight = FontWeight.Normal,
-        fontSize = 48.sp, // Increased font size for the new font
-        color = VibrantBlue
-    )
+	bodyLarge = TextStyle(
+		fontFamily = FontFamily.Default,
+		fontWeight = FontWeight.Normal,
+		fontSize = 16.sp,
+		lineHeight = 24.sp,
+		letterSpacing = 0.5.sp
+	),
+	headlineMedium = TextStyle(
+		fontFamily = StixTwoMath, // Use the new Stix Two Math font
+		fontWeight = FontWeight.ExtraBold,
+		fontSize = 24.sp // Adjust font size for the new font
+	),
 )

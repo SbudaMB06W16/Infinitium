@@ -1,3 +1,9 @@
 # ninja log v5
 0	75	1771985999911170865	CMakeFiles/myapp.dir/myapp.cpp.o	833e82f2c3b58ccc
 75	152	1771985999987168566	/home/sbuda0611/myProjects/Infinitium/app/build/intermediates/cxx/Debug/4p4q6t58/obj/arm64-v8a/libmyapp.so	f99165cc137af457
+1	2807	1772227595487157506	CMakeFiles/myapp.dir/myapp.cpp.o	833e82f2c3b58ccc
+0	3279	1772227595969014301	CMakeFiles/algebra_engine.dir/algebra_engine.cpp.o	7bc2974b391aadf7
+3279	3337	1772227596028996487	libalgebra_engine.a	4187d7382ffe4cc0
+3337	3588	1772227596279922024	/home/sbuda0611/myProjects/Infinitium/app/build/intermediates/cxx/Debug/4p4q6t58/obj/arm64-v8a/libmyapp.so	399c8053b14adf3c
+6	1486	1772227969573674201	CMakeFiles/myapp.dir/myapp.cpp.o	833e82f2c3b58ccc
+1486	1644	1772227969728635514	/home/sbuda0611/myProjects/Infinitium/app/build/intermediates/cxx/Debug/4p4q6t58/obj/arm64-v8a/libmyapp.so	399c8053b14adf3c

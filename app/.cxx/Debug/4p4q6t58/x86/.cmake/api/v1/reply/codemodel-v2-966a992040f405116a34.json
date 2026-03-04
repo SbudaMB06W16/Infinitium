@@ -15,7 +15,8 @@
 					"source" : ".",
 					"targetIndexes" : 
 					[
-						0
+						0,
+						1
 					]
 				}
 			],
@@ -30,7 +31,8 @@
 					"name" : "myapp",
 					"targetIndexes" : 
 					[
-						0
+						0,
+						1
 					]
 				}
 			],
@@ -38,8 +40,15 @@
 			[
 				{
 					"directoryIndex" : 0,
+					"id" : "algebra_engine::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-algebra_engine-Debug-ab53b753816e5bba0c65.json",
+					"name" : "algebra_engine",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
 					"id" : "myapp::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-myapp-Debug-7841358537b0cc8c90db.json",
+					"jsonFile" : "target-myapp-Debug-4a91687c3900e3028be4.json",
 					"name" : "myapp",
 					"projectIndex" : 0
 				}

@@ -11,7 +11,7 @@
 				}
 			],
 			"type" : "UNINITIALIZED",
-			"value" : "arm64-v8a"
+			"value" : "x86"
 		},
 		{
 			"name" : "ANDROID_NDK",
@@ -63,7 +63,7 @@
 				}
 			],
 			"type" : "UNINITIALIZED",
-			"value" : "arm64-v8a"
+			"value" : "x86"
 		},
 		{
 			"name" : "CMAKE_ANDROID_NDK",
@@ -151,7 +151,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/sbuda0611/myProjects/Infinitium/app/.cxx/Debug/4p4q6t58/arm64-v8a"
+			"value" : "/home/sbuda0611/myProjects/Infinitium/app/.cxx/Debug/4p4q6t58/x86"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -707,7 +707,7 @@
 				}
 			],
 			"type" : "UNINITIALIZED",
-			"value" : "/home/sbuda0611/myProjects/Infinitium/app/build/intermediates/cxx/Debug/4p4q6t58/obj/arm64-v8a"
+			"value" : "/home/sbuda0611/myProjects/Infinitium/app/build/intermediates/cxx/Debug/4p4q6t58/obj/x86"
 		},
 		{
 			"name" : "CMAKE_LINKER",
@@ -979,7 +979,7 @@
 				}
 			],
 			"type" : "UNINITIALIZED",
-			"value" : "/home/sbuda0611/myProjects/Infinitium/app/build/intermediates/cxx/Debug/4p4q6t58/obj/arm64-v8a"
+			"value" : "/home/sbuda0611/myProjects/Infinitium/app/build/intermediates/cxx/Debug/4p4q6t58/obj/x86"
 		},
 		{
 			"name" : "CMAKE_SHARED_LINKER_FLAGS",
@@ -1219,10 +1219,10 @@
 			[
 				{
 					"name" : "HELPSTRING",
-					"value" : "The CMake toolchain file"
+					"value" : "No help, variable specified on the command line."
 				}
 			],
-			"type" : "FILEPATH",
+			"type" : "UNINITIALIZED",
 			"value" : "/home/sbuda0611/Android/Sdk/ndk/28.2.13676358/build/cmake/android.toolchain.cmake"
 		},
 		{
@@ -1263,7 +1263,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/sbuda0611/myProjects/Infinitium/app/.cxx/Debug/4p4q6t58/arm64-v8a"
+			"value" : "/home/sbuda0611/myProjects/Infinitium/app/.cxx/Debug/4p4q6t58/x86"
 		},
 		{
 			"name" : "myapp_IS_TOP_LEVEL",

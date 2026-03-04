@@ -2,7 +2,7 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "/home/sbuda0611/myProjects/Infinitium/app/build/intermediates/cxx/Debug/4p4q6t58/obj/arm64-v8a/libmyapp.so"
+			"path" : "/home/sbuda0611/myProjects/Infinitium/app/build/intermediates/cxx/Debug/4p4q6t58/obj/x86/libmyapp.so"
 		}
 	],
 	"backtrace" : 1,
@@ -25,13 +25,13 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 28,
+				"line" : 32,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 35,
+				"line" : 39,
 				"parent" : 0
 			}
 		]
@@ -62,6 +62,13 @@
 			}
 		}
 	],
+	"dependencies" : 
+	[
+		{
+			"backtrace" : 2,
+			"id" : "algebra_engine::@6890427a1f51a3e7e1df"
+		}
+	],
 	"id" : "myapp::@6890427a1f51a3e7e1df",
 	"link" : 
 	{
@@ -70,6 +77,11 @@
 			{
 				"fragment" : "-static-libstdc++ -Wl,--build-id=sha1 -Wl,--no-rosegment -Wl,--no-undefined-version -Wl,--fatal-warnings -Wl,--no-undefined -Qunused-arguments",
 				"role" : "flags"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "libalgebra_engine.a",
+				"role" : "libraries"
 			},
 			{
 				"backtrace" : 2,

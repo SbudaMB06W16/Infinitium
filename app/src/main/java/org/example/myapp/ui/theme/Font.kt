@@ -8,3 +8,7 @@ import org.example.myapp.R
 val GreatVibes = FontFamily(
     Font(R.font.great_vibes_regular, FontWeight.ExtraBold)
 )
+
+val StixTwoMath = FontFamily(
+    Font(R.font.stixtwotext_variablefont_wght, FontWeight.Normal)
+)

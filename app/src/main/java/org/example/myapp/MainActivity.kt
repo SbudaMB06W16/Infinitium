@@ -50,6 +50,11 @@ fun AppNavHost(navController: NavHostController) {
                 popUpTo(mainScreenRoute) { inclusive = true }
             }
         }
+        val navigateToProfile: () -> Unit = { navController.navigate("profile") }
+        val navigateToAbout: () -> Unit = { navController.navigate("about") }
+        val navigateToLeaderboard: () -> Unit = { navController.navigate("leaderboard") }
+        val navigateToChallenge: () -> Unit = { navController.navigate("challenge") }
+        
         composable(mainScreenRoute) {
             MainScreen(
                 onTopicClick = { topicTitle ->
@@ -60,74 +65,61 @@ fun AppNavHost(navController: NavHostController) {
                     }
                 },
                 onNavigateToMain = navigateToMain,
-                onNavigateToProfile = { navController.navigate("profile") },
-                onNavigateToAbout = { navController.navigate("about") },
-                onNavigateToLeaderboard = { navController.navigate("leaderboard") },
-                onNavigateToChallenge = { navController.navigate("challenge") }
+                onNavigateToProfile = navigateToProfile,
+                onNavigateToAbout = navigateToAbout,
+                onNavigateToLeaderboard = navigateToLeaderboard,
+                onNavigateToChallenge = navigateToChallenge
             )
         }
         composable("topicDetail/{topicTitle}") { backStackEntry ->
             TopicDetailScreen(
                 topicTitle = backStackEntry.arguments?.getString("topicTitle") ?: "",
-                onNavigateUp = { navController.navigateUp() },
-                onNavigateToMain = navigateToMain,
-                onNavigateToProfile = { navController.navigate("profile") },
-                onNavigateToAbout = { navController.navigate("about") },
-                onNavigateToLeaderboard = { navController.navigate("leaderboard") },
-                onNavigateToChallenge = { navController.navigate("challenge") }
+                onNavigateUp = { navController.navigateUp() }
             )
+        }
+        composable("algebraicExpressions") {
+            AlgebraicExpressionsScreen()
         }
         composable("profile") { 
             ProfileScreen(
                 onNavigateToMain = navigateToMain,
-                onNavigateToAbout = { navController.navigate("about") },
-                onNavigateToLeaderboard = { navController.navigate("leaderboard") },
-                onNavigateToChallenge = { navController.navigate("challenge") },
+                onNavigateToAbout = navigateToAbout,
+                onNavigateToLeaderboard = navigateToLeaderboard,
+                onNavigateToChallenge = navigateToChallenge,
                 onSettingsClicked = { navController.navigate("settings") }
             )
         }
         composable("about") { 
             AboutScreen(
                 onNavigateToMain = navigateToMain,
-                onNavigateToProfile = { navController.navigate("profile") },
-                onNavigateToLeaderboard = { navController.navigate("leaderboard") },
-                onNavigateToChallenge = { navController.navigate("challenge") }
+                onNavigateToProfile = navigateToProfile,
+                onNavigateToLeaderboard = navigateToLeaderboard,
+                onNavigateToChallenge = navigateToChallenge
             )
         }
         composable("leaderboard") { 
             LeaderboardScreen(
                 onNavigateToMain = navigateToMain,
-                onNavigateToProfile = { navController.navigate("profile") },
-                onNavigateToAbout = { navController.navigate("about") },
-                onNavigateToChallenge = { navController.navigate("challenge") }
+                onNavigateToProfile = navigateToProfile,
+                onNavigateToAbout = navigateToAbout,
+                onNavigateToChallenge = navigateToChallenge
             )
         }
         composable("challenge") { 
             ChallengeScreen(
                 onNavigateToMain = navigateToMain,
-                onNavigateToProfile = { navController.navigate("profile") },
-                onNavigateToAbout = { navController.navigate("about") },
-                onNavigateToLeaderboard = { navController.navigate("leaderboard") }
+                onNavigateToProfile = navigateToProfile,
+                onNavigateToAbout = navigateToAbout,
+                onNavigateToLeaderboard = navigateToLeaderboard
             )
         }
         composable("settings") {
             SettingsScreen(
                 onNavigateToMain = navigateToMain,
-                onNavigateToProfile = { navController.navigate("profile") },
-                onNavigateToAbout = { navController.navigate("about") },
-                onNavigateToLeaderboard = { navController.navigate("leaderboard") },
-                onNavigateToChallenge = { navController.navigate("challenge") }
-            )
-        }
-        composable("algebraicExpressions") {
-            TopicDetailScreen(
-                topicTitle = "Algebraic Expressions",
-                onNavigateUp = { navController.navigateUp() },
-                onNavigateToMain = navigateToMain,
-                onNavigateToProfile = { navController.navigate("profile") },
-                onNavigateToAbout = { navController.navigate("about") },
-                onNavigateToLeaderboard = { navController.navigate("leaderboard") },
-                onNavigateToChallenge = { navController.navigate("challenge") }
+                onNavigateToProfile = navigateToProfile,
+                onNavigateToAbout = navigateToAbout,
+                onNavigateToLeaderboard = navigateToLeaderboard,
+                onNavigateToChallenge = navigateToChallenge
             )
         }
     }
