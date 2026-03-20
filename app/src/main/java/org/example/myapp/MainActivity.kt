@@ -59,10 +59,10 @@ fun AppNavHost(navController: NavHostController) {
         composable(mainScreenRoute) {
             MainScreen(
                 onTopicClick = { topicTitle ->
-                    if (topicTitle == "Algebraic Expressions") {
-                        navController.navigate("algebraicExpressions")
-                    } else {
-                        navController.navigate("topicDetail/$topicTitle")
+                    when (topicTitle) {
+                        "Tutorial" -> navController.navigate("tutorial")
+                        "Algebraic Expressions" -> navController.navigate("algebraicExpressions")
+                        else -> navController.navigate("topicDetail/$topicTitle")
                     }
                 },
                 onNavigateToMain = navigateToMain,
@@ -72,6 +72,9 @@ fun AppNavHost(navController: NavHostController) {
                 onNavigateToChallenge = navigateToChallenge
             )
         }
+        composable("tutorial") {
+            TutorialScreen(onNavigateUp = { navController.navigateUp() })
+        }
         composable("topicDetail/{topicTitle}") { backStackEntry ->
             TopicDetailScreen(
                 topicTitle = backStackEntry.arguments?.getString("topicTitle") ?: "",
@@ -79,7 +82,7 @@ fun AppNavHost(navController: NavHostController) {
             )
         }
         composable("algebraicExpressions") {
-            AlgebraicExpressionsScreen()
+            AlgebraicExpressionsScreen(onNavigateUp = { navController.navigateUp() })
         }
         composable("profile") { 
             ProfileScreen(

@@ -21,6 +21,7 @@ import androidx.compose.material.icons.filled.Casino
 import androidx.compose.material.icons.filled.Equalizer
 import androidx.compose.material.icons.filled.FormatListNumbered
 import androidx.compose.material.icons.filled.MultilineChart
+import androidx.compose.material.icons.filled.School
 import androidx.compose.material.icons.filled.ShowChart
 import androidx.compose.material.icons.filled.SquareFoot
 import androidx.compose.material.icons.filled.Superscript
@@ -51,6 +52,7 @@ data class TopicItem(
 private val topicsData = listOf(
     // Topics Group
     listOf(
+        TopicItem(Icons.Filled.School, "Tutorial"),
         TopicItem(Icons.Filled.Calculate, "Algebraic Expressions"),
         TopicItem(Icons.Filled.Superscript, "Exponents"),
         TopicItem(Icons.Filled.FormatListNumbered, "Number Patterns"),

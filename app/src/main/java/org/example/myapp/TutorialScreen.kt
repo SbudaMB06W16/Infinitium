@@ -1,8 +1,10 @@
 package org.example.myapp
 
 import androidx.activity.compose.BackHandler
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -47,8 +49,9 @@ import androidx.compose.ui.unit.sp
 import kotlinx.coroutines.delay
 import org.example.myapp.ui.theme.GreatVibes
 
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun AlgebraicExpressionsScreen(
+fun TutorialScreen(
     onNavigateUp: () -> Unit
 ) {
     BackHandler { onNavigateUp() }
@@ -158,7 +161,7 @@ fun AlgebraicExpressionsScreen(
                 .padding(16.dp)
         ) {
             Text(
-                text = "Algebraic Expressions",
+                text = "Tutorial",
                 style = MaterialTheme.typography.headlineLarge,
                 modifier = Modifier
                     .fillMaxWidth()
@@ -199,7 +202,28 @@ fun AlgebraicExpressionsScreen(
                                 "Undo", 
                                 Modifier
                                     .size(32.dp)
-                                    .clickable(enabled = history.isNotEmpty()) { undo() },
+                                    .combinedClickable(
+                                        enabled = history.isNotEmpty(),
+                                        onClick = { undo() },
+                                        onLongClick = {
+                                            history.clear()
+                                            items.clear()
+                                            items.addAll(initialConfig.map { config ->
+                                                CardItem(
+                                                    id = config.id,
+                                                    label = config.label,
+                                                    color = config.color,
+                                                    sign = config.sign,
+                                                    isDraggable = config.id != 5,
+                                                    isSplittable = config.id != 5
+                                                )
+                                            })
+                                            val temp = items.toMutableList()
+                                            processZeros(temp)
+                                            items.clear()
+                                            items.addAll(temp)
+                                        }
+                                    ),
                                 tint = if (history.isNotEmpty()) MaterialTheme.colorScheme.primary else Color.Gray
                             )
                             Icon(
