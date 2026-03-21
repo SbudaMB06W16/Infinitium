@@ -61,7 +61,6 @@ fun AppNavHost(navController: NavHostController) {
                 onTopicClick = { topicTitle ->
                     when (topicTitle) {
                         "Tutorial" -> navController.navigate("tutorial")
-                        "Algebraic Expressions" -> navController.navigate("algebraicExpressions")
                         else -> navController.navigate("topicDetail/$topicTitle")
                     }
                 },
@@ -80,9 +79,6 @@ fun AppNavHost(navController: NavHostController) {
                 topicTitle = backStackEntry.arguments?.getString("topicTitle") ?: "",
                 onNavigateUp = { navController.navigateUp() }
             )
-        }
-        composable("algebraicExpressions") {
-            AlgebraicExpressionsScreen(onNavigateUp = { navController.navigateUp() })
         }
         composable("profile") { 
             ProfileScreen(
