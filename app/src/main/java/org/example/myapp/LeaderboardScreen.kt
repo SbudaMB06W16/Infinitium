@@ -37,6 +37,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import org.example.myapp.ui.theme.GreatVibes
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -120,7 +121,8 @@ private fun TopPlayerBanner(user: User) {
         Column(horizontalAlignment = Alignment.End) {
             Text(
                 text = user.name,
-                style = MaterialTheme.typography.bodySmall,
+                fontFamily = GreatVibes,
+                style = MaterialTheme.typography.titleLarge,
                 color = vibrantBlue
             )
             Spacer(modifier = Modifier.height(4.dp))
