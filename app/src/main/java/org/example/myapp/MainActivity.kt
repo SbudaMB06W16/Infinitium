@@ -14,7 +14,19 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.toRoute
+import kotlinx.serialization.Serializable
 import org.example.myapp.ui.theme.InfinitiumTheme
+
+@Serializable object Welcome
+@Serializable object Main
+@Serializable object Tutorial
+@Serializable data class TopicDetailRoute(val topicTitle: String)
+@Serializable object Profile
+@Serializable object About
+@Serializable object Leaderboard
+@Serializable object Challenge
+@Serializable object Settings
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,7 +34,6 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             InfinitiumTheme {
-                // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
@@ -37,31 +48,31 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun AppNavHost(navController: NavHostController) {
-    NavHost(navController = navController, startDestination = "welcome") {
-        composable("welcome") {
+    NavHost(navController = navController, startDestination = Welcome) {
+        composable<Welcome> {
             WelcomeScreen(onNavigateToMain = {
-                navController.navigate("main") {
-                    popUpTo("welcome") { inclusive = true }
+                navController.navigate(Main) {
+                    popUpTo(Welcome) { inclusive = true }
                 }
             })
         }
-        val mainScreenRoute = "main"
+
         val navigateToMain: () -> Unit = {
-            navController.navigate(mainScreenRoute) {
-                popUpTo(mainScreenRoute) { inclusive = true }
+            navController.navigate(Main) {
+                popUpTo(Main) { inclusive = true }
             }
         }
-        val navigateToProfile: () -> Unit = { navController.navigate("profile") }
-        val navigateToAbout: () -> Unit = { navController.navigate("about") }
-        val navigateToLeaderboard: () -> Unit = { navController.navigate("leaderboard") }
-        val navigateToChallenge: () -> Unit = { navController.navigate("challenge") }
+        val navigateToProfile: () -> Unit = { navController.navigate(Profile) }
+        val navigateToAbout: () -> Unit = { navController.navigate(About) }
+        val navigateToLeaderboard: () -> Unit = { navController.navigate(Leaderboard) }
+        val navigateToChallenge: () -> Unit = { navController.navigate(Challenge) }
         
-        composable(mainScreenRoute) {
+        composable<Main> {
             MainScreen(
                 onTopicClick = { topicTitle ->
                     when (topicTitle) {
-                        "Tutorial" -> navController.navigate("tutorial")
-                        else -> navController.navigate("topicDetail/$topicTitle")
+                        "Tutorial" -> navController.navigate(Tutorial)
+                        else -> navController.navigate(TopicDetailRoute(topicTitle))
                     }
                 },
                 onNavigateToMain = navigateToMain,
@@ -71,25 +82,27 @@ fun AppNavHost(navController: NavHostController) {
                 onNavigateToChallenge = navigateToChallenge
             )
         }
-        composable("tutorial") {
-            TutorialScreen(onNavigateUp = { navController.navigateUp() })
-        }
-        composable("topicDetail/{topicTitle}") { backStackEntry ->
+        
+        // Decoupled Tutorial Screen
+        tutorialScreen(onNavigateUp = { navController.navigateUp() })
+
+        composable<TopicDetailRoute> { backStackEntry ->
+            val route: TopicDetailRoute = backStackEntry.toRoute()
             TopicDetailScreen(
-                topicTitle = backStackEntry.arguments?.getString("topicTitle") ?: "",
+                topicTitle = route.topicTitle,
                 onNavigateUp = { navController.navigateUp() }
             )
         }
-        composable("profile") { 
+        composable<Profile> { 
             ProfileScreen(
                 onNavigateToMain = navigateToMain,
                 onNavigateToAbout = navigateToAbout,
                 onNavigateToLeaderboard = navigateToLeaderboard,
                 onNavigateToChallenge = navigateToChallenge,
-                onSettingsClicked = { navController.navigate("settings") }
+                onSettingsClicked = { navController.navigate(Settings) }
             )
         }
-        composable("about") { 
+        composable<About> { 
             AboutScreen(
                 onNavigateToMain = navigateToMain,
                 onNavigateToProfile = navigateToProfile,
@@ -97,7 +110,7 @@ fun AppNavHost(navController: NavHostController) {
                 onNavigateToChallenge = navigateToChallenge
             )
         }
-        composable("leaderboard") { 
+        composable<Leaderboard> { 
             LeaderboardScreen(
                 onNavigateToMain = navigateToMain,
                 onNavigateToProfile = navigateToProfile,
@@ -105,7 +118,7 @@ fun AppNavHost(navController: NavHostController) {
                 onNavigateToChallenge = navigateToChallenge
             )
         }
-        composable("challenge") { 
+        composable<Challenge> { 
             ChallengeScreen(
                 onNavigateToMain = navigateToMain,
                 onNavigateToProfile = navigateToProfile,
@@ -113,7 +126,7 @@ fun AppNavHost(navController: NavHostController) {
                 onNavigateToLeaderboard = navigateToLeaderboard
             )
         }
-        composable("settings") {
+        composable<Settings> {
             SettingsScreen(
                 onNavigateToMain = navigateToMain,
                 onNavigateToProfile = navigateToProfile,

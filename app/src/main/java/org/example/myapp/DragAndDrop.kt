@@ -7,6 +7,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.compositionLocalOf
+import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -50,6 +51,7 @@ fun DragContainer(
                     modifier = Modifier
                         .onGloballyPositioned { targetSize = it.size }
                         .graphicsLayer {
+                            // Using state inside graphicsLayer avoids recomposition of the Box content
                             val offset = state.dragPosition + state.dragOffset - state.touchOffset - containerOffset
                             translationX = offset.x
                             translationY = offset.y
@@ -120,10 +122,17 @@ fun <T> DropTarget(
     content: @Composable BoxScope.(isInBound: Boolean, data: T?) -> Unit
 ) {
     val dragInfo = LocalDragTargetInfo.current
-    val dragTouchPoint = dragInfo.dragPosition + dragInfo.dragOffset
     var targetBounds by remember { mutableStateOf<Rect?>(null) }
     
-    val isHovering = targetBounds?.contains(dragTouchPoint) ?: false
+    // Optimization: derivedStateOf ensures we only recompose when 'isHovering' value actually changes,
+    // not every time the dragOffset (pixel position) changes.
+    val isHovering by remember {
+        derivedStateOf {
+            val dragTouchPoint = dragInfo.dragPosition + dragInfo.dragOffset
+            targetBounds?.contains(dragTouchPoint) ?: false
+        }
+    }
+
     val isInBound = dragInfo.isDragging && isHovering
 
     var wasHoveringBeforeRelease by remember { mutableStateOf(false) }
